@@ -65,8 +65,17 @@ navigator.geolocation.watchPosition(set_my_position);
 else {
         alert("Geolocation doesn't work in your browser");
 }
+  
+old_position = new google.maps.Marker({
+position: {lat: -33.327617, lng: 115.633066},
+map: zombie_map
+
+});
+
 
 function set_my_position(position) {
+
+old_position.setMap(null);
 
 var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	console.log(pos);
@@ -77,6 +86,7 @@ var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longi
 		map: zombie_map
 		
 		});
+old_position = marker
 }
 
         if (count<1) {
